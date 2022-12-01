@@ -44,11 +44,16 @@ while ($sacrieur['pdv'] > 0 && $bouftou['pdv'] > 0)
             $bouftou['atk'] = $bouftou['atk'] + ( $bouftou['atk'] * 0.2 );
             $sacrieur['pdv'] = $sacrieur['pdv'] - $bouftou['atk'];
         }
+        if ($sacrieur['pdv'] <= 0) 
+        {
+            echo 'You Died';
+            break;
+        }
+        if ($bouftou['pdv'] <= 0) 
+        {
+            echo 'You Win';
+            break;
+        }
     }
 };
-if ($sacrieur['pdv'] <= 0) 
-{
-    echo 'You Died';
-} else {
-    echo 'You Win';
-}
+
