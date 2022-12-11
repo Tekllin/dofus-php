@@ -2,7 +2,7 @@
 $sacrieur = 
 [
     'pdv' => 150,
-    'atk' => 20,
+    'atk' => 18,
 ];
 $bouftou =
 [
@@ -16,7 +16,7 @@ while ($sacrieur['pdv'] > 0 && $bouftou['pdv'] > 0)
     if ($action == 1) 
     {
         $bouftou['pdv'] = $bouftou['pdv'] - $sacrieur['atk'];
-    };
+    }
     if ($action == 2) 
     {
         if ($sacrieur['pdv'] >= 140) 
@@ -26,11 +26,16 @@ while ($sacrieur['pdv'] > 0 && $bouftou['pdv'] > 0)
             $sacrieur['pdv'] = $sacrieur['pdv'] + 15;
             $sacrieur['atk'] = $sacrieur['atk'] + (0.05 * $sacrieur['atk']) ;
         }   
-    };
+    }
+    if ($bouftou['pdv'] <= 0) 
+    {
+        echo 'You Win';
+        break;
+    }
     if ($action == 3) 
     {
         $sacrieur['pdv'] = -1000;
-    };
+    }
     if ($bouftou['pdv'] >= 100) 
     {
         $sacrieur['pdv'] = $sacrieur['pdv'] - $bouftou['atk'];
@@ -38,7 +43,7 @@ while ($sacrieur['pdv'] > 0 && $bouftou['pdv'] > 0)
         $soin = rand(1, 2);
         if ($soin == 1) 
         {
-            $bouftou['pdv'] = $bouftou['pdv'] + ($bouftou['pdv'] * 0.4);
+            $bouftou['pdv'] = $bouftou['pdv'] + ($bouftou['pdv'] * 0.5);
             $sacrieur['pdv'] = $sacrieur['pdv'] - $bouftou['atk'];
         } else {
             $bouftou['atk'] = $bouftou['atk'] + ( $bouftou['atk'] * 0.2 );
@@ -49,11 +54,5 @@ while ($sacrieur['pdv'] > 0 && $bouftou['pdv'] > 0)
             echo 'You Died';
             break;
         }
-        if ($bouftou['pdv'] <= 0) 
-        {
-            echo 'You Win';
-            break;
-        }
     }
 };
-
